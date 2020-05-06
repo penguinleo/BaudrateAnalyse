@@ -8,9 +8,9 @@ def BaudCalculate(baud,clk):
 					"clk":clk,
 					"baudrate":baud,
 					"DIV":0,
-					"actual baudrate":0,
-					"baudrate error":0,
-					"relative error":0
+					"actual_baudrate":0,
+					"baudrate_error":0,
+					"relative_error":0
 					}
 	Cal_Div = clk * math.pow(10,6) / baud
 	# Div = Decimal(clk * 10^6) / Decimal(baud)
@@ -22,8 +22,8 @@ def BaudCalculate(baud,clk):
 					"clk":clk,
 					"baudrate":baud,
 					"DIV":Int_Div,
-					"actual baudrate":Act_Baud,
-					"baudrate error":Baud_Err,
-					"relative error":Relat_Err
+					"actual_baudrate":Act_Baud,
+					"baudrate_error":Baud_Err,
+					"relative_error":Relat_Err
 					}
 	return baud_info
