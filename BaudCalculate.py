@@ -1,4 +1,6 @@
 # from decimal import *
+# calculate the actual baudrate with the system clock
+# the error, the divider value.
 import math 
 def BaudCalculate(baud,clk):
 	# getcontext().prec = 1
