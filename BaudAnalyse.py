@@ -10,5 +10,6 @@ def BaudAnalyse(clk):
 		baudrate = baud + index * step
 		baud_info_list.append(BaudCalculate(baudrate,clk))
 		pass
+	# print(baud_info_list)
 	return baud_info_list
 	pass 

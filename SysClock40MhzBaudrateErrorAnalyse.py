@@ -7,14 +7,11 @@
 # The the |RefErr| < (1 / ( 2 * DIV - 1 ) )
 from BaudCalculate import BaudCalculate
 from BaudAnalyse import BaudAnalyse
-from BaudrateDivider import BaudrateDivider
 import matplotlib.pyplot as plt 
+
 baud = 115200
-clk = 60
-div = 8
+clk = 40
 baud_info = BaudCalculate(baud,clk)
-print(baud_info)
-baud_info = BaudrateDivider(baud,div,clk)
 print(baud_info)
 baud_info_list = BaudAnalyse(clk)
 print(len(baud_info_list))
@@ -43,13 +40,16 @@ for index in range(0,len(baud_info_list)):
 	low_time_limt_list.append(baud_info_list[index]["bit_time"]*(-0.003))
 	max_relative_err_list.append(baud_info_list[index]["relative_error_maximum"])
 	min_relative_err_list.append(baud_info_list[index]["relative_error_maximum"]*(-1.0))
+    # relative_err_list.append(baud_info_list[index]["baudrate"])
+    # # uprelative_list.append(0.003)
+    # lowrelative_list.append(-0.003)
 	pass
 fig = plt.figure("baudrate error")
 plt.plot(baud_list,error_list,'b*')
 plt.plot(baud_list,downlimit_list,'r')
 plt.plot(baud_list,uplimit_list,'r')
-plt.xlabel("baudrate")
-plt.ylabel("error")
+plt.xlabel("baudrate/bps")
+plt.ylabel("error/bps")
 # plt.show()
 fig2 = plt.figure("relative error")
 plt.plot(baud_list,relative_err_list,'b*')
@@ -57,13 +57,13 @@ plt.plot(baud_list,uprelative_list,'r')
 plt.plot(baud_list,lowrelative_list,'r')
 plt.plot(baud_list,max_relative_err_list,'y.')
 plt.plot(baud_list,min_relative_err_list,'y.')
-plt.xlabel("baudrate")
+plt.xlabel("baudrate/bps")
 plt.ylabel("relative")
 
 fig3 = plt.figure("bit time error")
 plt.plot(baud_list,bit_time_error,'b*')
 plt.plot(baud_list,up_time_limit_list,'r')
 plt.plot(baud_list,low_time_limt_list,'r')
-plt.xlabel("baudrate")
+plt.xlabel("baudrate/bps")
 plt.ylabel("bit time error /ns")
 plt.show()
