@@ -8,6 +8,7 @@
 from BaudCalculate import BaudCalculate
 from BaudAnalyse import BaudAnalyse
 from BaudrateDivider import BaudrateDivider
+from BaudrateDivSearch import BaudrateDivSelect
 import matplotlib.pyplot as plt 
 baud = 115200
 clk = 60
@@ -44,6 +45,13 @@ for index in range(0,len(baud_info_list)):
 	max_relative_err_list.append(baud_info_list[index]["relative_error_maximum"])
 	min_relative_err_list.append(baud_info_list[index]["relative_error_maximum"]*(-1.0))
 	pass
+div_list = BaudrateDivSelect(baud,clk)
+div_n_list = []
+div_relat_err_list = []
+for index in range(0,len(div_list)):
+	div_n_list.append(div_list[index]["BDIV"])
+	div_relat_err_list.append(div_list[index]["relative_baud_error"])
+	pass
 fig = plt.figure("baudrate error")
 plt.plot(baud_list,error_list,'b*')
 plt.plot(baud_list,downlimit_list,'r')
@@ -59,11 +67,14 @@ plt.plot(baud_list,max_relative_err_list,'y.')
 plt.plot(baud_list,min_relative_err_list,'y.')
 plt.xlabel("baudrate")
 plt.ylabel("relative")
-
 fig3 = plt.figure("bit time error")
 plt.plot(baud_list,bit_time_error,'b*')
 plt.plot(baud_list,up_time_limit_list,'r')
 plt.plot(baud_list,low_time_limt_list,'r')
 plt.xlabel("baudrate")
 plt.ylabel("bit time error /ns")
+fig4 = plt.figure("baud div relative error")
+plt.plot(div_n_list,div_relat_err_list,'b*')
+plt.xlabel("DIV")
+plt.ylabel("relative error")
 plt.show()
