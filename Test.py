@@ -9,9 +9,10 @@ from BaudCalculate import BaudCalculate
 from BaudAnalyse import BaudAnalyse
 from BaudrateDivider import BaudrateDivider
 from BaudrateDivSearch import BaudrateDivSelect
+from SerialDataGenerate import SerialSendWave
 import matplotlib.pyplot as plt 
-baud = 115200
-clk = 60
+baud = 115200 * 16
+clk = 40
 div = 8
 baud_info = BaudCalculate(baud,clk)
 print(baud_info)
@@ -52,6 +53,7 @@ for index in range(0,len(div_list)):
 	div_n_list.append(div_list[index]["BDIV"])
 	div_relat_err_list.append(div_list[index]["relative_baud_error"])
 	pass
+# print(div_list)
 fig = plt.figure("baudrate error")
 plt.plot(baud_list,error_list,'b*')
 plt.plot(baud_list,downlimit_list,'r')
@@ -77,4 +79,26 @@ fig4 = plt.figure("baud div relative error")
 plt.plot(div_n_list,div_relat_err_list,'b*')
 plt.xlabel("DIV")
 plt.ylabel("relative error")
+plt.title("baud div relative error")
+
+wave_list = []
+wave_value = []
+wave_time = []
+wave_value_B = []
+wave_time_B = []
+wave_list = SerialSendWave(115200,1000,170)
+wave_list_B = SerialSendWave(115200,40,170)
+for index in range(0,len(wave_list)):
+	wave_value.append(wave_list[index]["Value"])
+	wave_time.append(wave_list[index]["Time"])
+	pass
+for index in range(0,len(wave_list_B)):
+	wave_value_B.append(wave_list_B[index]["Value"])
+	wave_time_B.append(wave_list_B[index]["Time"])
+	pass
+fig5 = plt.figure("baudrate wave")
+plt.plot(wave_time,wave_value,'b')
+plt.plot(wave_time_B,wave_value_B,'r')
 plt.show()
+
+
