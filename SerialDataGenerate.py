@@ -12,13 +12,16 @@ def SerialSendWave(baudrate, clk, data):
 	byte_points_number = bit_points_number * bits_number
 # parity calculate
 	parity_bit = ((data>>7)&1)^((data>>6)&1)^((data>>5)&1)^((data>>4)&1)^((data>>3)&1)^((data>>2)&1)^((data>>1)&1)^((data)&1)
-	print(parity_bit)
+	# print(parity_bit)
 # wave data
 	wave_list = []
 	wave_data = {}
+	bit_time_info = {}
+	bits_time_info_list = []
+	wave_info = {}
 # wave generate
 	for bits_index in range(0,bits_number):
-		print(bits_index)
+		# print(bits_index)
 		if bits_index == 0:
 			serial_out = 0
 		elif bits_index <= 8:
@@ -27,11 +30,23 @@ def SerialSendWave(baudrate, clk, data):
 			serial_out = parity_bit
 		elif bits_index == 10:
 			serial_out = 1
+		bit_start_time = ((bits_index*bit_points_number)+1)*quatum_clk
+		bit_stop_time = ((bits_index*bit_points_number)+bit_points_number)*quatum_clk
+		bit_time_info = {
+			"Bit Start Time": bit_start_time,
+			"Bit Stop Time": bit_stop_time
+		}
+		bits_time_info_list.append(bits_time_info_list)
 	# the bit width delay and wave data store
-		for bit_width_cnt in range(0,bit_points_number-1):
+		for bit_width_cnt in range(0,bit_points_number):
 			wave_data = {
 				"Value": serial_out,
 				"Time": ((bits_index*bit_points_number)+bit_width_cnt)*quatum_clk
 			}
 			wave_list.append(wave_data)
-	return wave_list
+	wave_info = {
+		"Bits Time Info List": bits_time_info_list,
+		"Wave Data List": wave_list
+	}
+
+	return wave_info

@@ -11,7 +11,7 @@ from BaudrateDivider import BaudrateDivider
 from BaudrateDivSearch import BaudrateDivSelect
 from SerialDataGenerate import SerialSendWave
 import matplotlib.pyplot as plt 
-baud = 115200 * 16
+baud = 115200
 clk = 40
 div = 8
 baud_info = BaudCalculate(baud,clk)
@@ -86,8 +86,10 @@ wave_value = []
 wave_time = []
 wave_value_B = []
 wave_time_B = []
-wave_list = SerialSendWave(115200,1000,170)
-wave_list_B = SerialSendWave(115200,40,170)
+wave_info = SerialSendWave(115200,14.7456,170)
+wave_info_B = SerialSendWave(115200,40,170)
+wave_list = wave_info["Wave Data List"]
+wave_list_B = wave_info_B["Wave Data List"]
 for index in range(0,len(wave_list)):
 	wave_value.append(wave_list[index]["Value"])
 	wave_time.append(wave_list[index]["Time"])
@@ -97,8 +99,8 @@ for index in range(0,len(wave_list_B)):
 	wave_time_B.append(wave_list_B[index]["Time"])
 	pass
 fig5 = plt.figure("baudrate wave")
-plt.plot(wave_time,wave_value,'b')
-plt.plot(wave_time_B,wave_value_B,'r')
+plt.plot(wave_time,wave_value,'b*')
+plt.plot(wave_time_B,wave_value_B,'r.')
 plt.show()
 
 
