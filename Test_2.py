@@ -22,8 +22,10 @@ from ByteTimeStampAnalyse import ByteTimeStampAnalyse
 import matplotlib.pyplot as plt 
 
 baud = 115200
-clk1 = 147.456
+clk1 = 100000
 clk = 40
 div = 8
-bit_list=ByteTimeStampAnalyse(baud,1,clk1,170)
+bit_list=ByteTimeStampAnalyse(baud,0,clk1,170)
+bit_list2 = ByteTimeStampAnalyse(baud,div,clk,170)
 print(bit_list)
+print(bit_list2)
