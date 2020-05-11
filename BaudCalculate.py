@@ -18,16 +18,16 @@ def BaudCalculate(baud,clk):
 	Second_us = 1 * math.pow(10,6)
 	Cal_Div = clk * Second_us / baud
 	# Div = Decimal(clk * 10^6) / Decimal(baud)
-	Int_Div = round(Cal_Div)
-	Act_Baud = clk * Second_us / Int_Div
+	Int_Div = round(Cal_Div) - 1
+	Act_Baud = clk * Second_us / (Int_Div + 1)
 	Baud_Err = Act_Baud - baud
-	Relat_Err = Baud_Err / Act_Baud 
+	Relat_Err = Baud_Err / baud 
 	Bit_Time = Second_ns / baud
 	Clock_Time = Second_ns / Second_us / clk
-	Act_BitTime = Clock_Time * Int_Div
+	Act_BitTime = Clock_Time * (Int_Div + 1)
 	BitTime_Err = Act_BitTime - Bit_Time
-	Relat_BitTime_Err = BitTime_Err / Act_BitTime
-	Relat_Err_Max = 1 / (2 * Int_Div - 1) 
+	Relat_BitTime_Err = BitTime_Err / Bit_Time
+	Relat_Err_Max = 1 / (2 * (Int_Div + 1) - 1) 
 	baud_info = {	
 					"clk":clk,
 					"baudrate":baud,

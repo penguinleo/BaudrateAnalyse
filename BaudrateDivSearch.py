@@ -7,7 +7,7 @@ def BaudrateDivSelect(baud,clk):
     for n in range(0,15):
     	div_temp = BaudrateDivider(baud,n,clk)
     	div_rela_err = div_temp["relative_baud_error"]
-    	if math.fabs(div_rela_err) <= 0.05:
+    	if math.fabs(div_rela_err) <= 5:
     		div_list.append(div_temp)
     		# pass
         # pass

@@ -20,12 +20,16 @@ from BaudrateDivSearch import BaudrateDivSelect
 from SerialDataGenerate import SerialSendWave
 from ByteTimeStampAnalyse import ByteTimeStampAnalyse
 import matplotlib.pyplot as plt 
-
+from DividerAnalyser import DividerAnalyser
 baud = 115200
-clk1 = 100000
+clk1 = 14.7456
 clk = 40
-div = 8
-bit_list=ByteTimeStampAnalyse(baud,0,clk1,170)
+div = 7
+# bit_list = ByteTimeStampAnalyse(baud,0,clk1,170)
 bit_list2 = ByteTimeStampAnalyse(baud,div,clk,170)
-print(bit_list)
+
+# divider_info = DividerAnalyser(baud,div,clk)
+
+# print(bit_list)
 print(bit_list2)
+# print(divider_info)
