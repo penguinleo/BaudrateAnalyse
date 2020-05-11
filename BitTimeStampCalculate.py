@@ -16,6 +16,7 @@ def BitTimeStampCalculate(start,baud,div,clk):
 		"UpBitStopTime"		: 	UpBitStopTime,
 		"UpBitPeriodError" 	: 	UpBitPeriodError,
 		"DownBitStopTime"	: 	DownBitStopTime,
-		"DownBitPeriodError": 	DownBitPeriodError		
+		"DownBitPeriodError": 	DownBitPeriodError,	
+		"Serial_Data"		: 	1	
 	}
 	return BitTimeDic
