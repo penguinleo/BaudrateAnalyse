@@ -84,10 +84,18 @@ def BitCompensateSearch(TargetFrequency, AcqDivider, SysFrequency):
 			# '\n'
 			)
 		pass
+	if len(UpCompList) !=0:
+		UpBitCompMethod = UpCompList[0]
+	else:
+		UpBitCompMethod = {}
+	if len(DownCompList) !=0:
+		DownBitCompMethod = DownCompList[0]
+	else:
+		DownBitCompMethod = {}
 	Result = {
 		"SolutionList" 		: ResultList,
-		"RoundUpSolution" 	: UpCompList,
-		"RoundDownSolution"	: DownCompList
+		"RoundUpSolution" 	: UpBitCompMethod,
+		"RoundDownSolution"	: DownBitCompMethod
 	}
 	return Result
 	pass
