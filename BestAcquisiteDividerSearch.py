@@ -5,7 +5,7 @@
 from BitCompensateSearch import BitCompensateSearch
 import math
 def BestAcquisiteDividerSearch(TargetFrequency,SysFrequency):
-	ResultList = []
+	GoodResult = []
 	for AcqDivider in range(3,16):
 		# print("\t\t\t\tThe Acquisite Divider : ",AcqDivider)
 		Result = BitCompensateSearch(TargetFrequency,AcqDivider,SysFrequency)
@@ -13,26 +13,23 @@ def BestAcquisiteDividerSearch(TargetFrequency,SysFrequency):
 		DownBitCompMethod	= Result["RoundDownSolution"]
 		UpTemp 		= UpBitCompMethod["CompUpNumber"] - UpBitCompMethod["CompDownNumber"]
 		DownTemp 	= DownBitCompMethod["CompUpNumber"] - DownBitCompMethod["CompDownNumber"]
-		if (math.fabs(temp) <= 2) & (math.fabs(temp) <= 2): #if the solution the difference between period number of round up and round down
+		if (math.fabs(UpTemp) <= 2) & (math.fabs(DownTemp) <= 2): #if the solution the difference between period number of round up and round down
 			print("\t\tFound a Good choice")
 			print(
-				"\t\t\tUpNumber:"	,	RoundUpList[index]["CompUpNumber"],
-				"\tDownNumber:"		,	RoundUpList[index]["CompDownNumber"],
-				"\tFrequency:"		,	RoundUpList[index]["CompTargetFrequency"],
-				"\tPeriodErr:"		,	RoundUpList[index]["CompTargetPeriodError"]
-				# '\n'
+				"\t\t\tUpBitCompMethod UpNumber:"	,	UpBitCompMethod["CompUpNumber"],
+				"\tUpBitCompMethod DownNumber:"		,	UpBitCompMethod["CompDownNumber"],
+				"\tUpFrequency:"					,	UpBitCompMethod["CompTargetFrequency"],
+				"\tUpPeriodErr:"					,	UpBitCompMethod["CompTargetPeriodError"],
+				'\n',
+				"\t\t\tDownBitCompMethod UpNumber:"	,	DownBitCompMethod["CompUpNumber"],
+				"\tDownBitCompMethod DownNumber:"	,	DownBitCompMethod["CompDownNumber"],
+				"\tDownFrequency:"					,	DownBitCompMethod["CompTargetFrequency"],
+				"\tDownPeriodErr:"					,	DownBitCompMethod["CompTargetPeriodError"],
 				)
-		if len(ResultList_Up)!=0 & len(ResultList_Down)!=0 :
-			print("\t\tThis divider is a best choice AcqDivider:", AcqDivider)
-			ResultChoice = {
-				"DividerInformation"			: Result["SolutionList"]
-				"BestRoundUpDividerSolution" 	: ResultList_Up[0],
-				"BestRoundDownDividerSolution"	: ResultList_Down[0]
-			}	
-			ResultList.append(ResultChoice)
-			print(
-				"\t\tThe Best Divider Found!\n",
-
-				)
-	return ResultList
+			GoodResult.append(Result)
+		else:
+			print("\t\t\t ")
+	if len(GoodResult) == 0:
+		print("\t\t\tOps! No Divider Founded")	
+	return GoodResult
 	
