@@ -31,5 +31,24 @@ def BestAcquisiteDividerSearch(TargetFrequency,SysFrequency):
 			print("\t\t\t ")
 	if len(GoodResult) == 0:
 		print("\t\t\tOps! No Divider Founded")	
+	else:
+	    print("\tFound good Choice")
+	    for index in range(0,len(GoodResult)):
+	        Choice = GoodResult[index]
+	        UpBitCompMethod     = Choice["RoundUpSolution"]
+	        DownBitCompMethod   = Choice["RoundDownSolution"]
+	        print("Best Choice index:",index)
+	        print("\tCompMethod",               UpBitCompMethod["CompMethod"],
+	            "\tCompUpNumber",               UpBitCompMethod["CompUpNumber"],
+	            "\tCompDownNumber",             UpBitCompMethod["CompDownNumber"],
+	            "\tCompTargetFrequency",        UpBitCompMethod["CompTargetFrequency"],
+	            "\tCompTargetPeriodError",      UpBitCompMethod["CompTargetPeriodError"],
+	            )
+	        print("\tCompMethod",               DownBitCompMethod["CompMethod"],
+	            "\tCompUpNumber",               DownBitCompMethod["CompUpNumber"],
+	            "\tCompDownNumber",             DownBitCompMethod["CompDownNumber"],
+	            "\tCompTargetFrequency",        DownBitCompMethod["CompTargetFrequency"],
+	            "\tCompTargetPeriodError",      DownBitCompMethod["CompTargetPeriodError"],
+	            )
 	return GoodResult
 	
