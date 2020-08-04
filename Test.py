@@ -12,7 +12,7 @@ from BaudrateDivSearch import BaudrateDivSelect
 from SerialDataGenerate import SerialSendWave
 import matplotlib.pyplot as plt 
 baud = 115200
-clk = 40
+clk = 60
 div = 8
 baud_info = BaudCalculate(baud,clk)
 print(baud_info)

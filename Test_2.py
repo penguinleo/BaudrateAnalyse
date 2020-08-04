@@ -23,7 +23,7 @@ import matplotlib.pyplot as plt
 from DividerAnalyser import DividerAnalyser
 baud = 115200
 clk1 = 14.7456
-clk = 40
+clk = 60
 div = 7
 # bit_list = ByteTimeStampAnalyse(baud,0,clk1,170)
 ByteStampDic        = ByteTimeStampAnalyse(baud,div,clk,170)

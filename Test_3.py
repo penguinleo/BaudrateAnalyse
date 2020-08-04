@@ -1,7 +1,8 @@
 from BitCompensateSearch import BitCompensateSearch
 from BestAcquisiteDividerSearch import BestAcquisiteDividerSearch
-ResultList = BitCompensateSearch(115200,9,40)
-BestChoice = BestAcquisiteDividerSearch(115200,40)
+# ResultList = BitCompensateSearch(115200,9,40)
+# BestChoice = BestAcquisiteDividerSearch(115200,40)
+BestChoice = BestAcquisiteDividerSearch(115200,60)
 print("\n\n\n")
 if len(BestChoice)==0:
     print("\t\t\tNot found good Divider!")
@@ -43,7 +44,7 @@ else:
 				# "\tUpAcquisitionFrequencyRelativeError"		, UpBitCompMethod["UpAcquisitionFrequencyRelativeError"],
 				# "\tUpAcquisitionPeriodRelativeError"		, UpBitCompMethod["UpAcquisitionPeriodRelativeError"],	
 			# Round Down analyser output
-				# "\tDownDivider"								, UpBitCompMethod["DownDivider"],
+				"\tDownDivider"								, UpBitCompMethod["DownDivider"],
 				# "\tDownTargetFrequency"						, UpBitCompMethod["DownTargetFrequency"],
 				# "\tDownTargetPeriod"						, UpBitCompMethod["DownTargetPeriod"],
 				# "\tDownAcquisitionFrequency"				, UpBitCompMethod["DownAcquisitionFrequency"],
@@ -105,7 +106,7 @@ else:
 				# "\tUpAcquisitionFrequencyRelativeError"		, DownBitCompMethod["UpAcquisitionFrequencyRelativeError"],
 				# "\tUpAcquisitionPeriodRelativeError"		, DownBitCompMethod["UpAcquisitionPeriodRelativeError"],	
 			# Round Down analyser output
-				# "\tDownDivider"								, DownBitCompMethod["DownDivider"],
+				"\tDownDivider"								, DownBitCompMethod["DownDivider"],
 				# "\tDownTargetFrequency"						, DownBitCompMethod["DownTargetFrequency"],
 				# "\tDownTargetPeriod"						, DownBitCompMethod["DownTargetPeriod"],
 				# "\tDownAcquisitionFrequency"				, DownBitCompMethod["DownAcquisitionFrequency"],
